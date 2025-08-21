@@ -1,13 +1,12 @@
 package com.tornado.trie;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 /**
  * Comprehensive unit tests for the Trie data structure.
@@ -251,11 +250,11 @@ class TrieTest {
         @Test
         @DisplayName("Should delete all words to make trie empty")
         void shouldDeleteAllWordsToMakeTrieEmpty() {
-            trie.delete("cat");
-            trie.delete("car");
-            trie.delete("card");
-            trie.delete("care");
-            trie.delete("careful");
+            assertTrue(trie.delete("cat"));
+            assertTrue(trie.delete("car"));
+            assertTrue(trie.delete("card"));
+            assertTrue(trie.delete("care"));
+            assertTrue(trie.delete("careful"));
 
             assertTrue(trie.isEmpty());
         }

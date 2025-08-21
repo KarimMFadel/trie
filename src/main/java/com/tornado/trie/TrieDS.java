@@ -51,10 +51,7 @@ public class TrieDS {
         TrieNode current = root;
 
         for (char ch : word.toCharArray()) {
-            if (!current.hasChild(ch)) {
-                current.addChild(ch, new TrieNode());
-            }
-            current = current.getChild(ch);
+            current = current.getChildren().computeIfAbsent(ch, c -> new TrieNode());
         }
 
         current.setEndOfWord(true);
@@ -172,13 +169,14 @@ public class TrieDS {
         boolean shouldDeleteChild = deleteHelper(node, word, index + 1);
 
         if (shouldDeleteChild) {
-            current.removeChild(ch);
 
             // Return true if current has no children and is not end of another word
-            return !current.isEndOfWord() && !current.hasChildren();
+            if (!node.isEndOfWord() && node.getChildren().isEmpty()) {
+                current.removeChild(ch);
+            }
         }
 
-        return false;
+        return true;
     }
 
     /**
