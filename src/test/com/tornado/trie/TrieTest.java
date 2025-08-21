@@ -366,13 +366,13 @@ class TrieTest {
             assertTrue(trie.lookup("456"));
         }
 
-//        @Test
-//        @DisplayName("Should handle very long words")
-//        void shouldHandleVeryLongWords() {
-//            String longWord = "a".repeat(1000);
-//            trie.insert(longWord);
-//
-//            assertTrue(trie.lookup(longWord));
-//        }
+        @Test
+        @DisplayName("Should handle very long words")
+        void shouldHandleVeryLongWords() {
+            String longWord = "a".repeat(1000);
+            trie.insert(longWord);
+
+            assertTrue(trie.lookup(longWord));
+        }
     }
 }

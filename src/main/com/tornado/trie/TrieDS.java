@@ -40,6 +40,9 @@ public class TrieDS {
      * @param value the value to associate with the word
      */
     public void insert(String word, Object value) {
+        if (word == null) {
+            throw new IllegalArgumentException("Word cannot be null");
+        }
         if (word.isEmpty()) {
             throw new IllegalArgumentException("Word cannot be empty");
         }
@@ -65,6 +68,9 @@ public class TrieDS {
      * @return true if the word exists in the Trie, false otherwise
      */
     public boolean lookup(String word) {
+        if (word == null) {
+            throw new IllegalArgumentException("Word cannot be null");
+        }
         if (word.isEmpty()) {
             throw new IllegalArgumentException("Word cannot be empty");
         }
@@ -81,6 +87,9 @@ public class TrieDS {
      * @return the value associated with the word, or null if word doesn't exist
      */
     public Object getValue(String word) {
+        if (word == null) {
+            throw new IllegalArgumentException("Word cannot be null");
+        }
         if (word.isEmpty()) {
             throw new IllegalArgumentException("Word cannot be empty");
         }
@@ -101,6 +110,9 @@ public class TrieDS {
      * @return true if the word was found and updated, false otherwise
      */
     public boolean update(String word, Object newValue) {
+        if (word == null) {
+            throw new IllegalArgumentException("Word cannot be null");
+        }
         if (word.isEmpty()) {
             throw new IllegalArgumentException("Word cannot be empty");
         }
@@ -121,6 +133,9 @@ public class TrieDS {
      * @return true if the word was found and deleted, false otherwise
      */
     public boolean delete(String word) {
+        if (word == null) {
+            throw new IllegalArgumentException("Word cannot be null");
+        }
         if (word.isEmpty()) {
             throw new IllegalArgumentException("Word cannot be empty");
         }
@@ -133,7 +148,7 @@ public class TrieDS {
      * Helper method for deleting a word from the Trie.
      * Uses recursion to traverse and clean up unnecessary nodes.
      */
-    private boolean deleteHelper(TrieNode current, String word, int index) {
+    private boolean deleteHelper(com.tornado.trie.TrieNode current, String word, int index) {
         if (index == word.length()) {
             // We've reached the end of the word
             if (!current.isEndOfWord()) {
@@ -201,6 +216,9 @@ public class TrieDS {
      * @return a list of words that start with the prefix
      */
     public List<String> getWordsWithPrefix(String prefix) {
+        if (prefix == null) {
+            throw new IllegalArgumentException("prefix cannot be null");
+        }
         System.out.println("Getting words with prefix: " + prefix);
         List<String> result = new ArrayList<>();
         TrieNode prefixNode = findNode(prefix);
