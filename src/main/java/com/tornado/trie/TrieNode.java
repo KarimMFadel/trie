@@ -1,8 +1,5 @@
 package com.tornado.trie;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,12 +10,36 @@ import java.util.Map;
  * - A flag indicating if this node represents the end of a word
  * - An optional value associated with the word (for key-value pairs)
  */
-@Data
-@NoArgsConstructor
 public class TrieNode {
     private Map<Character, TrieNode> children = new HashMap<>();
-    private boolean endOfWord = false;
+    private boolean isEndOfWord = false;
     private Object value;
+
+    public TrieNode() {
+        this.children = new HashMap<>();
+        this.isEndOfWord = false;
+        this.value = null;
+    }
+
+    public Map<Character, TrieNode> getChildren() {
+        return children;
+    }
+
+    public boolean isEndOfWord() {
+        return isEndOfWord;
+    }
+
+    public void setEndOfWord(boolean endOfWord) {
+        isEndOfWord = endOfWord;
+    }
+
+    public Object getValue() {
+        return value;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
 
     /**
      * Checks if this node has a child for the given character.
